@@ -19,6 +19,18 @@
   * Simple/ugly printing is allowed here. 
   * Hard code the user input
 
+```
+sale = 10
+tax = (sale * .05)
+round(tax + sale)
+
+price = float(input("Enter price amount:"))
+tax = .05
+total = (price*tax) + price
+
+print (f"${total}")
+```
+
 ---
 
 |[Next Topic](/02_Data_Types/03_strings.md)|
