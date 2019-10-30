@@ -67,6 +67,20 @@ Write a program that asks the user to enter an object’s mass, and then calcula
 If the object weighs more than 1,000 newtons, display a message indicating that it is tooheavy. 
 If the object weighs less than 10 newtons, display a message indicating that it is toolight.
 
+####################################################################
+#Calculate object weight from known mass
+def heavyCalc():
+    mass = float(input("Enter the objects mass in kilograms ")) #asks for objects mass in kilgrams
+    weight = mass * 9.8  # calculates weight in newtons
+    if weight > 1000:
+        print("This object is too heavy")
+    elif weight < 10:
+        print("This object is too light")
+    else:
+        print(weight)
+heavyCalc()
+####################################################################
+
 4. Magic DatesThe date June 10, 1960, is special because when it is written in the following format, themonth times the day equals the year:6/10/60
 Design a program that asks the user to enter a month (in numeric form), a day, and a two digit year. 
 The program should then determine whether the month times the day equals the year. If so, it should display a message saying the date is magic. 
