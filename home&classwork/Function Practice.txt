@@ -1,0 +1,10 @@
+Write a program that asks the user to enter a distance in kilometers, and then converts thatdistance to miles. The conversion formula is as follows:Miles =Kilometers * 0.6214
+
+##############################################################
+def kilotomiles():
+    kilodist = int(input("Please enter the distance traveled in kilometers "))
+    conVer = .6214
+    miles = kilodist * conVer
+    print("{} is equal to {:.2f} in miles.".format(kilodist, miles))
+kilotomiles()
+##############################################################
