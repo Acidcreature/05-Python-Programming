@@ -14,4 +14,3 @@ def main():
     #close file
     infile.close()
 main()
-
