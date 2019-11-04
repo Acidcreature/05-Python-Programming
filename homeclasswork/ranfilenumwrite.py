@@ -12,6 +12,6 @@ def rnfw():
         f.write(str(random.randrange(1, 100)))
         f.write('\n')
         linecount += 1
-    #close file
+    #close file()
     f.close()
 rnfw()
