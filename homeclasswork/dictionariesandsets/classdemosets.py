@@ -8,43 +8,43 @@
 # The elements that are stored in a set can be of different data types
 
 # Creating a set
-#my_set = set(['a', 'b', 'c'])
-#print(my_set)
+my_set = set(['a', 'b', 'c'])
+print(my_set)
 
-#my_set2 = set('abc')
-#print(my_set2)
+my_set2 = set('abc')
+print(my_set2)
 
-#my_set3 = set('aabbcc')
-#print(my_set3)
+my_set3 = set('aabbcc')
+print(my_set3)
 
-#my_set4 = set('one two three')
-#print(my_set4)
+my_set4 = set('one two three')
+print(my_set4)
 
-# Find the length of a set
-#print(len(my_set4))
+#Find the length of a set
+print(len(my_set4))
 
 # Adding an removing elements of a set
-#new_set = set()
-#new_set.add(1)
-#new_set.add(2)
-#new_set.add(3)
-#print(new_set)
+new_set = set()
+new_set.add(1)
+new_set.add(2)
+new_set.add(3)
+print(new_set)
 
-#new_set.update([4, 5, 6])
-#print('after update', new_set)
+new_set.update([4, 5, 6])
+print('after update', new_set)
 
-#new_set2 = ([7, 8, 9])
-#new_set.update(new_set2)
-#print('After variable update', new_set)
+new_set2 = ([7, 8, 9])
+new_set.update(new_set2)
+print('After variable update', new_set)
 
-#new_set.remove(1)
-#print(new_set)
+new_set.remove(1)
+print(new_set)
 # keyerror
-# new_set.remove(10)
+ new_set.remove(10)
 
 #using discard
-#new_set.discard(10)
-#print(new_set)
+new_set.discard(10)
+print(new_set)
 
 # using for loop to iterate over a set
 
