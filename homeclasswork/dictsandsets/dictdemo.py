@@ -4,7 +4,7 @@
 
 # Creating a dictionary
 
-phonebook = {'Chris':'555-1111','Katie':'555-2222','Joanne':'555-3333'}
+#phonebook = {'Chris':'555-1111','Katie':'555-2222','Joanne':'555-3333'}
 #print(phonebook)
 #
 ##get a specific value
@@ -113,7 +113,7 @@ print('After updating', instruments)
 ​
 # More ways to add instruments
 instruments['bass'] = {'color':'purple', 'sound':'slappadabass'}
-print('AFter adding bass', instruments)
+print('After adding bass', instruments)
 ​
 # Access items/nested items within our dictionary
 print('guitar', instruments['guitar'])
@@ -124,4 +124,3 @@ for instrument, properties in instruments.items():
     print('Instrument: ', instrument)
     for property in properties:
         print(property + ":", properties[property])
-

@@ -38,8 +38,6 @@ course’s room number, instructor, and meeting time."""
 #Student class guide thing
 def classguide():
 
-    course = ''
-
     courseroomdict = {'CS101': '3004', 'CS102': '4501',
  'CS103': '6755', 'NT110': '1244', 'CM241': '1411'}
 
@@ -57,7 +55,7 @@ def classguide():
     instructor = courseinstructdict.get(course)
     classtime = coursetimedict.get(course)
 
-print(f" Your class {course} is in room {room}, at {classtime} with Mr/Mrs {instructor}")
+    print(f" Your class {course} is in room {room}, at {classtime} with Mr/Mrs {instructor}")
 
 classguide()
 
