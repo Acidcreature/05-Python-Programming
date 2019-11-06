@@ -12,7 +12,7 @@ def wordfreq():
     #open file
     infile = open("words.txt", 'r')
     #read it and add to set
-    line = infile.read().split(' ')
+    line = infile.read().split()
     #print(line)
     # add each item to the dictionary
     for e in line:

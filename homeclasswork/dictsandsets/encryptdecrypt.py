@@ -58,7 +58,7 @@ def crypton():
     #read that file 
     encryptedline = encrypted_f.readline()
     while encryptedline != '':
-        print(encryptedline)
+        print(encryptedline, end = '')
         encryptedline = encrypted_f.readline()
     #Close file
     encrypted_f.close()
