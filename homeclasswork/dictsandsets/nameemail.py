@@ -33,6 +33,7 @@ def nameemail():
                 addemail = input("Please enter the Email to add. ")
                 nedata.update({addname : addemail})
                 print(nedata)
+                #input validation
                 numchoice = input("Do you need to enter more data? Enter 1 to continue \
                    \n 0 to go back to main menue, or \'exit\' to end. ")
                 while numchoice != '0' and numchoice != '1' and numchoice != 'exit':
@@ -52,6 +53,7 @@ def nameemail():
                     emailchange = input("Enter new email. ")
                     nedata.update({namechange : emailchange})
                     print(nedata)
+                    #input validation
                     numchoice = input("Do you need to enter more data? Enter 2 to continue \
                    \n 0 to go back to main menue, or \'exit\' to end. ")
                     while numchoice != '0' and numchoice != '2' and numchoice != 'exit':
@@ -59,12 +61,15 @@ def nameemail():
                    \n 0 to go back to main menue, or \'exit\' to end. ")
             else:
                 break
+            #Third loop for deleting entries
         while numchoice != '0' or numchoice != 'exit':
             if numchoice == '3':
                 print(nedata)
+                #Data to delete
                 userdel = input("Enter a user name to delete ")
                 del nedata[userdel]
                 print(nedata)
+                #input validation
                 numchoice = input("Do you need to enter more data? Enter 3 to continue \
                    \n 0 to go back to main menue, or \'exit\' to end. ")
                 while numchoice != '0' and numchoice != '3' and numchoice != 'exit':
