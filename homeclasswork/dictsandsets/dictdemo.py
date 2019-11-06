@@ -8,7 +8,7 @@
 #print(phonebook)
 #
 ##get a specific value
-"""
+
 print(phonebook['Katie'])
 
 ##Using the in and not in operators
@@ -99,7 +99,7 @@ print(phonebook)
 #the popitem method
 key, value = phonebook.popitem()
 print(key, value)
-"""
+
 # Multi Dimensional Dictionary​
 # Initialize instrument dictionary
 instruments = {'drums': {'color':'black', 'sound':'boom'},
