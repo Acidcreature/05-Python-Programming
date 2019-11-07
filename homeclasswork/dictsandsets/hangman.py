@@ -35,12 +35,9 @@ def hangman():
     #variables for the game
     guesses = 0
     guessedletters = []
+    currentguess = ''
     correct = []
     incorrect = []
-    hiddenword = []
-    realword = []
-    shownword = []
-    
     
 
     print("*********************")
@@ -55,22 +52,25 @@ def hangman():
     #makes sure its a word
     while hiddenword == int or hiddenword == float:
         hiddenword = input("Please enter a word to start the game. ")
-    # puts real word into list of letters
-    for w in hiddenword:
-        realword += w
-        shownword += "_"
-    ## shows hidden length of word
-    print(shownword)
-    print(realword)
+    # shows hidden length of word
+    print((" _ ") * len(hiddenword))
 
     while guesses < 7:
         currentguess = input("Enter a letter to be guessed. ")
         while currentguess.isalpha == False:
             currentguess = input("Enter a letter to be guessed. ")
-        for i in realword:
-            if i == realword[i]
-                shownword[i].insert(i)
-        
+        else:
+            if currentguess in hiddenword:
+                correct += currentguess
+                guessedletters += currentguess
+                guesses += 1
+            elif currentguess not in currentguess:
+                incorrect += currentguess
+                guessedletters += currentguess
+                guesses += 1
+            print(f"You have guessed {guessedletters} so far.")
+            print("You have {} turns remaining.".format(6 - guesses))
+                  
 
 
 
