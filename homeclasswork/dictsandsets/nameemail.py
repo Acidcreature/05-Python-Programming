@@ -23,6 +23,7 @@ def nameemail():
     except:
         # Dictionary of stored names and emails
         nedata = {'Jon Snow' : 'winter1$coming@whitewalker.com', 'Bruce Wayne' : 'imB@tman@darkcave.com'}
+    # Does this no matter outcome of try/except
     finally:
         # Who is the user looking for?
         entry = nedata.get(input('Please enter the name of the person you\'d like to contact via email. '))

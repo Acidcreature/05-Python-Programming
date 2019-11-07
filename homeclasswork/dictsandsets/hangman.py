@@ -68,10 +68,8 @@ def hangman():
         while currentguess.isalpha == False:
             currentguess = input("Enter a letter to be guessed. ")
         for i in realword:
-            if i == realword:
-                shownword[i].insert(currentguess)
-                print(shownword)
-                print(realword)
+            if i == realword[i]
+                shownword[i].insert(i)
         
 
 
