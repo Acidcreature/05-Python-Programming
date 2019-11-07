@@ -27,7 +27,7 @@ def nameemail():
         # Who is the user looking for?
         entry = nedata.get(input('Please enter the name of the person you\'d like to contact via email. '))
         # Print the requested info, or none.
-        print(f"Here is the information we have stored,", entry)
+        print("Here is the information we have stored,", entry)
         print("Here are the contacts available. ", nedata)    
         # Bring the user to the selection menu.
         print("If the contact is not available, please look at the following options. \n")
