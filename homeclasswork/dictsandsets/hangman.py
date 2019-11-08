@@ -46,9 +46,9 @@ def hangman():
     #occurences = [i for i, v in enumerate(hiddenword) if v == currentguess]
 
     print('\n')
-    print("*********************")
-    print("*Welcome to Hangman!*")
-    print("*********************")
+    print("************************")
+    print("*Welcome to Hang-pardy!*")
+    print("************************")
     print('\n')
     print("The rules are simple. You will have 6 guesses to identify the word that has been hidden.")
     print("You can either guess a single letter, or the whole word at the end.")
