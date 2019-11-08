@@ -38,40 +38,68 @@ def hangman():
     currentguess = ''
     correct = []
     incorrect = []
-    
+    gameboard = []
+    # the magic sauce for finding *all* occurences of a word
+    # since gameboard and the_word will have the same number of elements
+    # we just iterate over the word and if a the condition is met we record
+    # the index and toss it in a list #Cammarata
+    #occurences = [i for i, v in enumerate(hiddenword) if v == currentguess]
 
     print("*********************")
     print("*Welcome to Hangman!*")
     print("*********************")
-    print('\n\n')
+    print('\n')
     print("The rules are simple. You will have 6 guesses to identify the word that has been hidden.")
     print("You can either guess a single letter or the whole word.")
     print("If you don\'t have a solution the sixth turn, you lose.", '\n')
     #select the word to be guessed
-    hiddenword = input("Please enter a word to start the game. ")
+    hiddenword = input("Please enter a word to start the game. ").lower()
     #makes sure its a word
     while hiddenword == int or hiddenword == float:
         hiddenword = input("Please enter a word to start the game. ")
     # shows hidden length of word
-    print((" _ ") * len(hiddenword))
-
-    while guesses < 7:
+    gameboard = ['_'] * len(hiddenword)
+    print(' '.join(gameboard), '\n')
+    # Loop for guessing, with validation for letters only.
+    while guesses < 6 and '_' in gameboard:
         currentguess = input("Enter a letter to be guessed. ")
-        while currentguess.isalpha == False:
+        while currentguess.isalpha() == False:
             currentguess = input("Enter a letter to be guessed. ")
         else:
-            if currentguess in hiddenword:
-                correct += currentguess
-                guessedletters += currentguess
-                guesses += 1
-            elif currentguess not in currentguess:
+    # the magic sauce for finding *all* occurences of a word
+    # since gameboard and the_word will have the same number of elements
+    # we just iterate over the word and if a the condition is met we record
+    # the index and toss it in a list #Cammarata
+            occurences = [index for index, letter in enumerate(hiddenword) if letter == currentguess]
+            if occurences:
+                for i in occurences:
+                    gameboard[i] = currentguess
+                print('\n')
+                print(f"Correct letters so far {correct}" )
+            else:
                 incorrect += currentguess
-                guessedletters += currentguess
-                guesses += 1
+                print('\n')
+                print(f"Incorrect letters so far {incorrect}" )
+            guessedletters += currentguess
+            guesses += 1
+            print('\n')
             print(f"You have guessed {guessedletters} so far.")
             print("You have {} turns remaining.".format(6 - guesses))
-                  
-
+            print('\n')
+            print(' '.join(gameboard), '\n')
+    # Win/Loss conditions
+    else:
+        # If you ran out of guesses you can still guess the word, or you lose.
+        if '_' in gameboard:
+            print("Time to guess the word, or else you LOSE.")
+            lastchance = input("Please enter what you think the word is. ").lower()
+            if lastchance == hiddenword:
+                print("You Win!")
+            else:
+                print("You lost, son")
+        # If you guessed all the letters, win.
+        elif '_' not in gameboard:
+            print("You Win!")
 
 
 hangman()
