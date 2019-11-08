@@ -75,34 +75,36 @@ def hangman():
     while guesses < 6 and '_' in gameboard:
         # makes input lower, avoids conflicts with upper vs. lower for words and guesses
         currentguess = input("Enter a letter to be guessed. ").lower()
-        while currentguess.isalpha() == False:
-            currentguess = input("Enter a letter to be guessed. ")
+        #restricts guesses to 1 letter at a time.
+        if len(currentguess) <= 1:
+            while currentguess.isalpha() == False:
+                currentguess = input("Enter a letter to be guessed. ")
         # Removes posibility of using a duplicate letter
-        if currentguess in guessedletters:
-            currentguess = input("This letter has been used, Please guess again. ")
-        else:
+            if currentguess in guessedletters:
+                currentguess = input("This letter has been used, Please guess again. ")
+            else:
     # the magic sauce for finding *all* occurences of a word
     # since gameboard and the word will have the same number of elements
     # we just iterate over the word and if a the condition is met we record
     # the index and toss it in a list #Cammarata
-            occurences = [index for index, letter in enumerate(hiddenword) if letter == currentguess]
-            if occurences:
-                for i in occurences:
-                    gameboard[i] = currentguess
-                correct += currentguess
+                occurences = [index for index, letter in enumerate(hiddenword) if letter == currentguess]
+                if occurences:
+                    for i in occurences:
+                        gameboard[i] = currentguess
+                    correct += currentguess
+                    print('\n')
+                    print(f"Correct letters so far {correct}" )
+                else:
+                    incorrect += currentguess
+                    print('\n')
+                    print(f"Incorrect letters so far {incorrect}" )
+                guessedletters += currentguess
+                guesses += 1
                 print('\n')
-                print(f"Correct letters so far {correct}" )
-            else:
-                incorrect += currentguess
+                print(f"You have guessed {guessedletters} so far.")
+                print("You have {} turns remaining.".format(6 - guesses))
                 print('\n')
-                print(f"Incorrect letters so far {incorrect}" )
-            guessedletters += currentguess
-            guesses += 1
-            print('\n')
-            print(f"You have guessed {guessedletters} so far.")
-            print("You have {} turns remaining.".format(6 - guesses))
-            print('\n')
-            print(' '.join(gameboard), '\n')
+                print(' '.join(gameboard), '\n')
     # Win/Loss conditions
     else:
         # If you ran out of guesses you can still guess the word, or you lose.
