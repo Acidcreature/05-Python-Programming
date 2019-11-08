@@ -27,8 +27,7 @@ guess is incorrect and remaining number of chances is one less. If remaining num
 the game is over  - player loses the game. Output a message that they have lost and what the correct word was.  Quit the game.
 """
 
-import time
-import pprint
+import getpass
 
 
 def hangman():
@@ -39,41 +38,58 @@ def hangman():
     correct = []
     incorrect = []
     gameboard = []
+    
     # the magic sauce for finding *all* occurences of a word
-    # since gameboard and the_word will have the same number of elements
+    # since gameboard and the word will have the same number of elements
     # we just iterate over the word and if a the condition is met we record
     # the index and toss it in a list #Cammarata
     #occurences = [i for i, v in enumerate(hiddenword) if v == currentguess]
 
+    print('\n')
     print("*********************")
     print("*Welcome to Hangman!*")
     print("*********************")
     print('\n')
     print("The rules are simple. You will have 6 guesses to identify the word that has been hidden.")
-    print("You can either guess a single letter or the whole word.")
+    print("You can either guess a single letter, or the whole word at the end.")
     print("If you don\'t have a solution the sixth turn, you lose.", '\n')
-    #select the word to be guessed
-    hiddenword = input("Please enter a word to start the game. ").lower()
+    #select the word to be guessed, getpass makes it hidden from the prompt. Stops cheaters.
+    hiddenword = getpass.getpass("Please enter a word to start the game. ").lower()
     #makes sure its a word
     while hiddenword == int or hiddenword == float:
         hiddenword = input("Please enter a word to start the game. ")
     # shows hidden length of word
     gameboard = ['_'] * len(hiddenword)
+    #removes '_' if it should be a blank space.
+    occurences = [index for index, letter in enumerate(hiddenword) if letter == ' ']
+    if occurences:
+        for i in occurences:
+            gameboard[i] = ' '
+    # same as above, but accounts for hypenated words
+    occurences = [index for index, letter in enumerate(hiddenword) if letter == '-']
+    if occurences:
+        for i in occurences:
+            gameboard[i] = '-'
     print(' '.join(gameboard), '\n')
     # Loop for guessing, with validation for letters only.
     while guesses < 6 and '_' in gameboard:
-        currentguess = input("Enter a letter to be guessed. ")
+        # makes input lower, avoids conflicts with upper vs. lower for words and guesses
+        currentguess = input("Enter a letter to be guessed. ").lower()
         while currentguess.isalpha() == False:
             currentguess = input("Enter a letter to be guessed. ")
+        # Removes posibility of using a duplicate letter
+        if currentguess in guessedletters:
+            currentguess = input("This letter has been used, Please guess again. ")
         else:
     # the magic sauce for finding *all* occurences of a word
-    # since gameboard and the_word will have the same number of elements
+    # since gameboard and the word will have the same number of elements
     # we just iterate over the word and if a the condition is met we record
     # the index and toss it in a list #Cammarata
             occurences = [index for index, letter in enumerate(hiddenword) if letter == currentguess]
             if occurences:
                 for i in occurences:
                     gameboard[i] = currentguess
+                correct += currentguess
                 print('\n')
                 print(f"Correct letters so far {correct}" )
             else:
@@ -96,7 +112,7 @@ def hangman():
             if lastchance == hiddenword:
                 print("You Win!")
             else:
-                print("You lost, son")
+                print(f"You lost, son. The word was {hiddenword.title()}")
         # If you guessed all the letters, win.
         elif '_' not in gameboard:
             print("You Win!")
