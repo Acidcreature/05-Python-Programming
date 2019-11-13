@@ -2,12 +2,12 @@
 
 class Cars:
     #the __init__ method initializes the attributes
-    def __init__(self, year, make, speed):
+    def __init__(self, year, make):
         self.__year = year 
         self.__make = make
-        self.__speed = speed
+        self.__speed = 0
 
-# The set_year method accepts an arguement for the year
+    # The set_year method accepts an arguement for the year
     def set_year(self, year):
         self.__year = year
 
@@ -40,9 +40,9 @@ class Cars:
         self.__speed -= brake
 
     # the get_accel method
-    #def get_accel(self):
-    #    return self.__speed 
+    def get_accel(self):
+        return self.__speed 
 
     # the get_brake method
-    #def get_brake(self):
-    #    return self.__speed 
+    def get_brake(self):
+        return self.__speed 
