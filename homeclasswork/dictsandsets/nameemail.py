@@ -55,7 +55,6 @@ def nameemail():
                     while numchoice != '0' and numchoice != '1' and numchoice != 'exit':
                         numchoice = input("Do you need to enter more data? Enter 1 to continue, \
                        \n 0 to go back to main menue, or \'exit\' to end. \n")
-                       
                 else:
                     break
                 #Second loop for editting emails
