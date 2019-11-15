@@ -13,13 +13,13 @@ def main():
     employee = empw.ProWork(name, empnum, shift, payrate)
     shiftsuper = empw.ShiftSuper(name, empnum, salary, bonus)
 
-    #Display Employee info
+    # Display Employee info
     print('Name: ', employee.get_name())
     print('Employee Num: ', employee.get_empnum())
     print('Shift: ', employee.get_shift())
     print('Pay: ', employee.get_payrate())
 
-    #Display Shift Supervisor info
+    # Display Shift Supervisor info
     print('Name: ', shiftsuper.get_name())
     print('Employee Num: ', shiftsuper.get_empnum())
     print('Salary: ', shiftsuper.get_salary())
