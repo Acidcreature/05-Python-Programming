@@ -27,7 +27,7 @@ def fileanalysis():
     #open file
     infile = open("names.txt", 'r')
     #read it and add to set
-    line = infile.read().split(' ')
+    line = infile.read().split('\n')
     #print(line)
     # add each item to the dictionary
     for e in line:
@@ -36,6 +36,8 @@ def fileanalysis():
         elif e in word_dict2:
             word_dict2[e] += 1 
     print(word_dict2)
+
+fileanalysis()
 
 
 
