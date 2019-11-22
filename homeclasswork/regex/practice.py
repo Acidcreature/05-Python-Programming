@@ -36,8 +36,24 @@ test
 Test 
 """
 
-pattern = re.compile(r'\w+,\s+\w+')
-matches = pattern.finditer(names)
+#pattern = re.compile(r'\w+,\s+\w+')
+#matches = pattern.finditer(names)
+
+#for match in matches:
+#    print(match)
+
+
+# 4 identifiers
+
+identifiers = '''
+False
+class
+1test
+test1
+'''
+
+pattern = re.compile(r'\b[a-zA-Z_][\w]+')
+matches = pattern.finditer(identifiers)
 
 for match in matches:
     print(match)
