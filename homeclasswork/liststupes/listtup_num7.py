@@ -49,5 +49,67 @@ def seven():
     print(listoflists[0][1])
     print(listoflists[0][2])
     print(listoflists[0][3])
-
 seven()
+
+
+
+#############################################################################################
+
+#'''Import random'''
+#import random
+#​
+#'''Global List'''
+#matrix = []
+#​
+#'''Main Function'''
+#def main():
+#    matrix_generator()
+#    for i in matrix:
+#        print(i)
+#    row = row_counter(matrix)
+#    column = column_counter()
+#    print(f"Rows(s) with the highest value: {row}")
+#    print(f"Column(s) with the highest value: {column}")
+#​
+#'''Generates a matrix of random values'''
+#def matrix_generator():
+#    rand = random.randint(2,11)
+#    for i in range(0,rand):
+#        matrix.append([])
+#    for i in range(0,rand):
+#        for j in range(0, rand):
+#            matrix[j].append(random.randint(0,1))
+#​
+#'''Used to generate the row. Will also be used on columns'''
+#def row_counter(matrix):
+#    row = [0]
+#    for i in range(len(matrix)):
+#        j = sum(matrix[i])
+#        k = row[0]
+#        if j > sum(matrix[k]):
+#            row = []
+#            row.append(i)
+#        elif j == sum(matrix[k]) and i != 0:
+#            row.append(i)
+#    return row
+#​
+#'''Inverts list then utilizes row function to calculate total.'''
+#def column_counter():
+#    column_list = []
+#    x = 0
+#    while x < len(matrix):
+#        '''This new list will be used to invert the matrix'''
+#        new_list = []
+#        y = 0
+#        while y < len(matrix):
+#            if matrix[y][x] == 1:
+#                new_list.append(1)
+#            else:
+#                new_list.append(0)
+#            y += 1
+#        column_list.append(new_list)
+#        x += 1
+#    return row_counter(column_list)
+#​
+#'''Call on the main function'''
+#main()

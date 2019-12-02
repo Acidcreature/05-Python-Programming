@@ -7,13 +7,16 @@ It also allows the user to see the list of others that are installed and then to
 import tkinter as tk
 from tkinter import ttk
 from tkinter import scrolledtext as tkst
-import importlib
-import re
+import pydoc
+import os
 import sys
+import re
+import importlib
 import io
 import time
 from pathlib import Path
 from contextlib import redirect_stdout
+
 
 # Class for our gui
 class MainMenu(tk.Tk):
@@ -26,16 +29,14 @@ class MainMenu(tk.Tk):
         # set the title and window size
         self.title('Method definition')
         self.geometry('800x425')
-        self.list1 = ['os', 'sys', 're', 'pprint']
         # build out the lists
         self.list1 = self.librlist()
         self.list2 = []
-        self.os_dict = None
         # establish the input box
         self.inputbox()
         # make the button to display the libraries and place the thing
-        self.displayall = ttk.Button(text = "For libraries see terminal window", command = self.get_help)
-        self.displayall.grid(row = 0, column = 1, pady = (10,0))
+        self.displayall = ttk.Button(text="For libraries see terminal window", command=self.get_help)
+        self.displayall.grid(row=0, column=1, pady=(10, 0))
         # make the comboboxes
         self.drop_menu1 = self.drop_menu(self.list1, 'Libraries', 0)
         self.drop_menu1.bind("<<ComboboxSelected>>", self.get_methods)
@@ -51,10 +52,10 @@ class MainMenu(tk.Tk):
         Enter any module name to get more help.  Or, type "modules spam" to search\
         for modules whose name or summary contain the string "spam".'
         # see if the file exists there
-        my_file = Path('test.txt')
-        if my_file.is_file():
-            print("")
-        # if not then make it
+        file = open('test.txt', 'w+')
+        my_file = Path(file)
+       ''' if my_file.is_file():
+            pass'''
         else:
             file = open('test.txt', 'w+')
             sys.stdout = file
@@ -81,11 +82,12 @@ class MainMenu(tk.Tk):
                     if match == i and match not in banned:
                         mod_list.append(match)
         # it doesnt get 'os' so go ahead and add that
-        mod_list.append('os')
+        ## mod_list.append('os')
         # sort the list
         mod_list.sort()
         # send it back
         return mod_list
+
     # function to display the modules in test.txt and write to the textbox
     def get_help(self):
         file = open('test.txt')
@@ -99,42 +101,39 @@ class MainMenu(tk.Tk):
     # function to let the user put in libraries not in the list
     def inputbox(self):
         # the label
-        self.inputboxlabel = ttk.Label(text = "Enter a library to search: ")
-        self.inputboxlabel.grid(row = 4, column = 0)
+        self.inputboxlabel = ttk.Label(text="Enter a library to search: ")
+        self.inputboxlabel.grid(row=4, column=0)
         # The input box itself
         self.inputbox = ttk.Entry(self)
-        self.inputbox.grid(row = 4, column = 1)
+        self.inputbox.grid(row=4, column=1)
         # get the button to make the magic thing
         self.getinputbox()
-
 
     # function to update the library list
     def updatelist(self):
         # add the users input to a list, sort it and update the combobox
         input1 = self.inputbox.get()
         self.list1.append(input1)
-        print(self.list1)
         self.list1.sort()
-        self.drop_menu1.configure(values = self.list1)
-
+        self.drop_menu1.configure(values=self.list1)
 
     # button to update the library list with the users input
     def getinputbox(self):
-        self.inputbutton = ttk.Button(text = "Click to apply your module", command = self.updatelist)
-        self.inputbutton.grid(row = 4, column = 2)
-      
+        self.inputbutton = ttk.Button(text="Click to apply your module", command=self.updatelist)
+        self.inputbutton.grid(row=4, column=2)
+
     # function to make the comboboxes
     def drop_menu(self, list1, var1, var2):
-        self.comboExample = ttk.Combobox(self, values = list1, state = 'readonly', height = 10)
+        self.comboExample = ttk.Combobox(self, values=list1, state='readonly', height=10)
         self.comboExample.set(var1)
-        self.comboExample.grid(row = 0, column = var2, pady = (10, 0))
+        self.comboExample.grid(row=0, column=var2, pady=(10, 0))
         return self.comboExample
 
-    # make the text box with scrolling 
+    # make the text box with scrolling
     def gettext(self):
         # make the scrolled text box
-        self.text = tkst.ScrolledText(self, wrap = tk.WORD, width = 85, height = 20, name = 'defs')
-        self.text.grid(padx = 10, pady = 10, row = 2, columnspan = 3, sticky = tk.W + tk.E)
+        self.text = tkst.ScrolledText(self, wrap=tk.WORD, width=85, height=20, name='defs')
+        self.text.grid(padx=10, pady=10, row=2, columnspan=3, sticky=tk.W + tk.E)
         self.text.insert('1.0', '')
         # send it back
         return self.text
@@ -149,7 +148,7 @@ class MainMenu(tk.Tk):
             self.textbox.destroy()
             self.textbox = self.gettext()
             # Get the definitions
-            definition = pydoc.render_doc(f'{self.libr}.{self.meth}', renderer = pydoc.plaintext)
+            definition = pydoc.render_doc(f'{self.libr}.{self.meth}', renderer=pydoc.plaintext)
             # add the definition to the text box
             self.textbox.insert('1.0', definition)
 
@@ -170,12 +169,36 @@ class MainMenu(tk.Tk):
             # set the key in the dictionary to be the value for the selection if it matches the pattern
             self.lib_dict[self.libr] = [function for function in dir(imported_module) if pattern.match(function)]
             # send the value to our methods box
-            self.drop_menu2.configure(values = self.lib_dict[self.libr])
+            self.drop_menu2.configure(values=self.lib_dict[self.libr])
         # if there is an error tell the user it is broken
         except ModuleNotFoundError:
             self.textbox.destroy()
             self.textbox = self.gettext()
             self.textbox.insert('1.0', "That one will not work. Try another.")
+
+
+def combo_box_1(self):
+    banned = 'Please wait a moment while I gather a list of all available modules...\
+     Enter any module name to get more help.  Or, type "modules spam" to search\
+     for modules whose name or summary contain the string "spam".'
+    file = open('test.txt', 'w+')
+    sys.stdout = file
+    help('modules')
+    sys.stdout = sys.__stdout__
+    file.close()
+    file = open('test.txt')
+    mod_list = []
+    modules = file.readlines()
+    pattern = re.compile(r'^([a-zA-Z_]+)$')
+    for module in modules:
+        mod = module.split()
+        for i in mod:
+            matches = pattern.findall(i)
+            for match in matches:
+                if match == i and match not in banned:
+                    mod_list.append(match)
+    mod_list.sort()
+    return " ".join(mod_list)
 
 
 # define our main function
@@ -185,4 +208,5 @@ def main():
     # call app to make the window
     app.mainloop()
 
-main()
+
+main() 
